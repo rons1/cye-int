@@ -34,7 +34,6 @@ cache = Cache(app)
 @limiter.limit("10/minute")
 @cache.cached(timeout=60 * NUMBER_OF_MINUTES_TO_CACHE)
 def proxy(path):
-    sleep(10)
     url = f'{REMOTE_HOSTNAME}{path}'
     if request.method == 'GET':
         res = get(url, params=request.args)
